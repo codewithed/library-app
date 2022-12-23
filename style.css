@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;800&display=swap');
 
 :root {
     --primary-color: #38bdf8;
@@ -10,6 +10,9 @@
     font-family: 'Poppins', sans-serif;
 }
 
+button, a {
+    cursor: pointer;
+}
 .nav-bar {
     display: flex;
     justify-content: space-between;
@@ -41,6 +44,7 @@
 .library-section {
     background-color: var(--primary-background);
     padding: 50px;
+    text-align: center;
 }
 
 footer {
@@ -65,4 +69,12 @@ footer a {
     background-color: var(--medium-blue);
     justify-content: space-between;
     box-shadow: var(--shadow);
+}
+
+.addBtn {
+    background-color: var(--primary-background);
+    color: black;
+    font-weight: 800;
+    border: none;
+    font-size: 24px;
 }
