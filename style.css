@@ -47,6 +47,8 @@ button, a {
 }
 
 .library-section {
+    display: grid;
+    word-wrap: wrap;
     background-color: var(--primary-background);
     padding: 50px;
     text-align: center;
@@ -68,6 +70,7 @@ footer a {
 }
 
 .book-card {
+    width: 100px;
     max-width: 40vw;
     display: flex;
     flex-direction: column;
@@ -123,15 +126,4 @@ footer a {
     background-color: black;
     z-index: 10;
     border-radius: 10px;
-}
-
-
-#overlay {
-    position: fixed;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    pointer-events: none;
 }
