@@ -49,9 +49,10 @@ addBtn.addEventListener('click', () => {
   librarySection.append(form);
 });
 
-// prevents default behaviour of submit button
+// creates new book from form data
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   addBooktoLibrary();
+  librarySection.removeChild(form);
 });
