@@ -51,9 +51,26 @@ function addBooktoLibrary() {
   librarySection.appendChild(bookCard);
   myLibrary.push(newbook);
 
+  // toggle read status
+  // toggle read and unread functionality
+  const readStatusBtns = document.querySelectorAll('#readStatusBtn');
+  for (let i = 0; i < myLibrary.length; i += 1) {
+    readStatusBtns[i].addEventListener('click', () => {
+      if (myLibrary[i].readStatus === 'read') {
+        myLibrary[i].readStatus = 'unread';
+        readStatusBtns[i].textContent = 'Unread';
+        readStatusBtns[i].style.backgroundColor = '#22c55e';
+      } else if (myLibrary[i].readStatus === 'unread') {
+        myLibrary[i].readStatus = 'read';
+        readStatusBtns[i].textContent = 'Read';
+        readStatusBtns[i].style.backgroundColor = '#f43f5e';
+      }
+    });
+  }
+
   const removeBtns = document.querySelectorAll('#remove');
   const bookCards = document.getElementsByClassName('bookCard');
-  for (let i = 0; i < removeBtns.length; i += 1) {
+  for (let i = 0; i < myLibrary.length; i += 1) {
     removeBtns[i].dataset.link = i;
 
     // remove the book
