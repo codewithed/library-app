@@ -12,8 +12,9 @@ function Book(title, author, pages, readStatus) {
 
 const book1 = new Book('loveIsWar', 'ice.k3', '21', 'read');
 
-function addBooktoLibrary(newbook) {
+function addBooktoLibrary(title, author, pages, readStatus) {
   // take user's input and store new book into an array
+  const newbook = new Book(title, author, pages, readStatus);
   myLibrary.push(newbook);
 }
 
@@ -30,5 +31,19 @@ function displayBooks() {
   });
 }
 
+const addBtn = document.getElementById('addBookBtn');
+addBtn.addEventListener('click', () => {
+  const form = document.createElement('div');
+  form.classList.add('book-form');
+  form.innerHTML = `<form class="form" method="post" action>
+                        <legend>Add New Book</legend>
+                        <input type="text" name="title" placeholder="title">
+                        <input type="text" name="author" placeholder="author">
+                        <input type="text" name="pages" placeholder="pages">
+                        <div>Have you read it?<input type="checkbox"></div>
+                        <button type='submit'>Add</button>
+                    </form>`;
+  librarySection.append(form);
+});
 addBooktoLibrary(book1);
 displayBooks();

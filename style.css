@@ -13,6 +13,11 @@
 button, a {
     cursor: pointer;
 }
+
+.container {
+    min-height: 100vh;
+}
+
 .nav-bar {
     display: flex;
     justify-content: space-between;
@@ -45,6 +50,7 @@ button, a {
     background-color: var(--primary-background);
     padding: 50px;
     text-align: center;
+    min-height: 100%;
 }
 
 footer {
@@ -62,13 +68,15 @@ footer a {
 }
 
 .book-card {
+    max-width: 40vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: var(--medium-blue);
     justify-content: space-between;
     box-shadow: var(--shadow);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .addBtn {
@@ -77,4 +85,53 @@ footer a {
     font-weight: 800;
     border: none;
     font-size: 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;;
+    background-color: var(--primary-color);
+    padding: 30px;
+    min-width: 40vh;
+    min-height: 45vh;
+    border-radius: 9px;
+}
+
+.form input {
+    font-size: 18px;
+    padding: 8px;
+    border: solid 1px gray;
+    border-radius: 8px;
+    min-width: 80%;
+}
+
+.form button {
+    font-size: 18px;
+    padding: 8px;
+    width: 240px;
+    max-width: 45%;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: black;
+    z-index: 10;
+    border-radius: 10px;
+}
+
+
+#overlay {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
 }
