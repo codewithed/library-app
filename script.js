@@ -2,6 +2,7 @@ const myLibrary = [];
 
 const librarySection = document.getElementById('library-section');
 
+// Book constructor
 function Book(title, author, pages, readStatus) {
   this.title = title;
   this.author = author;
@@ -10,40 +11,47 @@ function Book(title, author, pages, readStatus) {
   this.info = () => `The ${title} by ${author} has ${pages} pages and is ${readStatus}`;
 }
 
-const book1 = new Book('loveIsWar', 'ice.k3', '21', 'read');
+// creates the form component
+const form = document.createElement('form');
+form.classList.add('book-form');
+form.innerHTML = `<form class="form" id="form" method="post" action>
+                        <legend>Add New Book</legend>
+                        <input type="text" data-id="title" name="title" placeholder="title" required>
+                        <input type="text" data-id="author" name="author" placeholder="author" required>
+                        <input type="text" data-id="pages" name="pages" placeholder="pages" required>
+                        <div>Have you read it?<input data-id="readStatus" type="checkbox"></div>
+                        <button id='submit' type='submit'>Add</button>
+                    </form>`;
 
-function addBooktoLibrary(title, author, pages, readStatus) {
-  // take user's input and store new book into an array
-  const newbook = new Book(title, author, pages, readStatus);
+// take user's input and store new book into an array
+function addBooktoLibrary() {
+  const formData = new FormData(form);
+  const title = formData.get('title');
+  const author = formData.get('author');
+  const pages = formData.get('pages');
+  const newbook = new Book(title, author, pages);
+
+  // add newBook to display
+  const bookCard = document.createElement('div');
+  bookCard.classList.add('book-card');
+  bookCard.innerHTML = `<p>${newbook.title}</p>
+                      <p>${newbook.author}</p>
+                      <p>${newbook.pages} pages</p>
+                      <button>${newbook.readStatus}</button>
+                      <button>Remove</button>`;
+  librarySection.appendChild(bookCard);
   myLibrary.push(newbook);
 }
 
-function displayBooks() {
-  myLibrary.forEach((book) => {
-    const bookCard = document.createElement('div');
-    bookCard.classList.add('book-card');
-    bookCard.innerHTML = `<p>${book.title}</p>
-                      <p>${book.author}</p>
-                      <p>${book.pages} pages</p>
-                      <button>${book.readStatus}</button>
-                      <button>Remove</button>`;
-    librarySection.appendChild(bookCard);
-  });
-}
-
+// displays the form on the screen
 const addBtn = document.getElementById('addBookBtn');
 addBtn.addEventListener('click', () => {
-  const form = document.createElement('div');
-  form.classList.add('book-form');
-  form.innerHTML = `<form class="form" method="post" action>
-                        <legend>Add New Book</legend>
-                        <input type="text" name="title" placeholder="title">
-                        <input type="text" name="author" placeholder="author">
-                        <input type="text" name="pages" placeholder="pages">
-                        <div>Have you read it?<input type="checkbox"></div>
-                        <button type='submit'>Add</button>
-                    </form>`;
   librarySection.append(form);
 });
-addBooktoLibrary(book1);
-displayBooks();
+
+// prevents default behaviour of submit button
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  addBooktoLibrary();
+});
