@@ -5,9 +5,16 @@
     --primary-background: #f0f9ff;
     --medium-blue: #7dd3fc;
     --shadow: rgba(0, 0, 0, 0.16) 0px 1px 6px;
+    --spacing-xl: 40px;
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-weight: 500;
+    word-wrap: break-word;
+    background-color: var(--primary-background);
 }
 
 button, a {
@@ -70,8 +77,6 @@ footer a {
 }
 
 .book-card {
-    width: 100px;
-    max-width: 40vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,12 +87,26 @@ footer a {
     border-radius: 10px;
 }
 
+.book-card button {
+    padding: 10px;
+    border: solid 1px grey;
+    border-radius: 7px;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
 .addBtn {
     background-color: var(--primary-background);
     color: black;
     font-weight: 800;
     border: none;
     font-size: 24px;
+    margin-bottom: 40px;
 }
 
 .form {
@@ -95,10 +114,11 @@ footer a {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    font-size: 20px;;
+    font-size: 20px;
     background-color: var(--primary-color);
     padding: 30px;
-    min-width: 40vh;
+    width: 300px;
+    max-width: 80%;
     min-height: 45vh;
     border-radius: 9px;
 }
@@ -122,8 +142,31 @@ footer a {
     position: fixed;
     top: 50%;
     left: 50%;
+    transition: 200ms ease-in-out;
     transform: translate(-50%, -50%) scale(0);
-    background-color: black;
     z-index: 10;
     border-radius: 10px;
+    background-color: var(--primary-color);
+    width: 360px;
+    max-width: 80%;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay {
+    position: fixed;
+    transition: 200ms ease-in-out;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
 }

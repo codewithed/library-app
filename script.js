@@ -1,6 +1,6 @@
 const myLibrary = [];
 
-const librarySection = document.getElementById('library-section');
+const booksGrid = document.getElementById('books-grid');
 
 // Book constructor
 function Book(title, author, pages, readStatus) {
@@ -12,8 +12,10 @@ function Book(title, author, pages, readStatus) {
 }
 
 // creates the form component
+const modal = document.getElementById('modal');
+const overlay = document.getElementById('overlay');
 const form = document.createElement('form');
-form.classList.add('book-form');
+form.classList.add('form');
 form.innerHTML = `<form class="form" id="form" method="post" action>
                         <legend>Add New Book</legend>
                         <input type="text" name="title" placeholder="title" required>
@@ -42,13 +44,13 @@ function addBooktoLibrary() {
   // add newBook to display
   const bookCard = document.createElement('div');
 
-  bookCard.classList.add('bookCard');
+  bookCard.classList.add('book-card');
   bookCard.innerHTML = `<p>"${newbook.title}"</p>
                       <p>${newbook.author}</p>
                       <p>${newbook.pages} pages</p>
                       <button id="readStatusBtn">${newbook.readStatus}</button>
                       <button data-link id="remove">Remove</button>`;
-  librarySection.appendChild(bookCard);
+  booksGrid.appendChild(bookCard);
   myLibrary.push(newbook);
 
   // toggle read status
@@ -69,14 +71,14 @@ function addBooktoLibrary() {
   }
 
   const removeBtns = document.querySelectorAll('#remove');
-  const bookCards = document.getElementsByClassName('bookCard');
+  const bookCards = document.getElementsByClassName('book-card');
   for (let i = 0; i < myLibrary.length; i += 1) {
     removeBtns[i].dataset.link = i;
 
     // remove the book
     removeBtns[i].addEventListener('click', () => {
       myLibrary.splice(i, 1);
-      librarySection.removeChild(bookCards[i]);
+      booksGrid.removeChild(bookCards[i]);
     });
   }
 }
@@ -84,12 +86,16 @@ function addBooktoLibrary() {
 // displays the form on the screen
 const addBtn = document.getElementById('addBookBtn');
 addBtn.addEventListener('click', () => {
-  librarySection.append(form);
+  modal.appendChild(form);
+  modal.classList.add('active');
+  overlay.classList.add('active');
 });
 
 // creates new book from form data
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   addBooktoLibrary();
-  librarySection.removeChild(form);
+  modal.removeChild(form);
+  modal.classList.remove('active');
+  overlay.classList.remove('active');
 });
