@@ -20,7 +20,7 @@ form.innerHTML = `<form class="form" id="form" method="post" action>
                         <legend>Add New Book</legend>
                         <input type="text" name="title" placeholder="title" required>
                         <input type="text" name="author" placeholder="author" required>
-                        <input type="text" name="pages" placeholder="pages" required>
+                        <input type="number" name="pages" placeholder="pages" required>
                         <label>Have you read it?</label><input id="checkbox" type="checkbox">
                         <button id='submit' type='submit'>Add</button>
                     </form>`;
