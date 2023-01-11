@@ -3,12 +3,14 @@ const myLibrary = [];
 const booksGrid = document.getElementById('books-grid');
 
 // Book constructor
-function Book(title, author, pages, readStatus) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readStatus = readStatus;
-  this.info = () => `The ${title} by ${author} has ${pages} pages and is ${readStatus}`;
+class Book {
+  constructor(title, author, pages, readStatus) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readStatus = readStatus;
+    this.info = () => `The ${title} by ${author} has ${pages} pages and is ${readStatus}`;
+  }
 }
 
 // creates the form component
