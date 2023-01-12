@@ -82,7 +82,7 @@ footer a {
     align-items: center;
     background-color: var(--medium-blue);
     justify-content: space-between;
-    box-shadow: var(--shadow);
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 10px;
 }

@@ -4,7 +4,7 @@ const booksGrid = document.getElementById('books-grid');
 
 // Book constructor
 class Book {
-  constructor(title, author, pages, readStatus) {
+  constructor(title, author, pages, readStatus, info) {
     this.title = title;
     this.author = author;
     this.pages = pages;
