@@ -4,7 +4,7 @@ const booksGrid = document.getElementById('books-grid');
 
 // Book constructor
 class Book {
-  constructor(title, author, pages, readStatus, info) {
+  constructor(title, author, pages, readStatus) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -52,6 +52,14 @@ function addBooktoLibrary() {
                       <p>${newbook.pages} pages</p>
                       <button id="readStatusBtn">${newbook.readStatus}</button>
                       <button data-link id="remove">Remove</button>`;
+
+  if (newbook.readStatus === 'unread') {
+    const btn = bookCard.querySelector('#readStatusBtn');
+    btn.style.backgroundColor = '#f43f5e';
+  } else if (newbook.readStatus === 'read') {
+    const btn = bookCard.querySelector('#readStatusBtn');
+    btn.style.backgroundColor = '#22c55e';
+  }
   booksGrid.appendChild(bookCard);
   myLibrary.push(newbook);
 
@@ -62,12 +70,12 @@ function addBooktoLibrary() {
     readStatusBtns[i].addEventListener('click', () => {
       if (myLibrary[i].readStatus === 'read') {
         myLibrary[i].readStatus = 'unread';
-        readStatusBtns[i].textContent = 'Unread';
-        readStatusBtns[i].style.backgroundColor = '#22c55e';
+        readStatusBtns[i].textContent = 'unread';
+        readStatusBtns[i].style.backgroundColor = '#f43f5e';
       } else if (myLibrary[i].readStatus === 'unread') {
         myLibrary[i].readStatus = 'read';
-        readStatusBtns[i].textContent = 'Read';
-        readStatusBtns[i].style.backgroundColor = '#f43f5e';
+        readStatusBtns[i].textContent = 'read';
+        readStatusBtns[i].style.backgroundColor = '#22c55e';
       }
     });
   }
